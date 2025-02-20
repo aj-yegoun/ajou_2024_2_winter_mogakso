@@ -10,37 +10,38 @@
 #define ll long long
 using namespace std;
 
-vector<int> graph[101010];
-int virus[101010];
-int visited[101010];
-
-int cnt = 0;
+int visited[10101010];
+vector<int> graph[10101010];
 
 void dfs(int start){
+    visited[start] = 1;
     for(int i = 0; i < graph[start].size(); i++){
-        int x = graph[start][i];
-        if(virus[x] == 0){
-            virus[x] = 1;
-            cnt++;
-            dfs(x);
+        int index = graph[start][i];
+        if(visited[index] == 0){
+            dfs(index);
         }
     }
 }
 
 int main() {
     FASTIO;
-
-    int n; cin >> n;
-    int t; cin >> t;
-    while(t--){
+    
+    int n, m;
+    cin >> n >> m; 
+    for(int i = 0; i < m; i++){
         int u, v;
         cin >> u >> v;
         graph[u].push_back(v);
         graph[v].push_back(u);
     }
-
-    virus[1] = 1;
-    dfs(1);
+    
+    int cnt = 0;
+    for(int i = 1; i <= n; i++){
+        if(visited[i] == 0){
+            cnt++;
+            dfs(i);
+        }
+    }
 
     cout << cnt << '\n';
 

@@ -5,22 +5,25 @@
 #include <queue>
 #include <cctype>
 #include <vector>
+#include <iterator>
 #define FASTIO ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+#define ll long long
 using namespace std;
 
 int main() {
     FASTIO;
 
     int n; cin >> n;
-    vector<pair<int,int>> coordinates(n);
+    vector<int> num(n);
     for(int i = 0; i < n; i++){
-        cin >> coordinates[i].second >> coordinates[i].first;
+        cin >> num[i];
     }
 
-    sort(coordinates.begin(), coordinates.end());
+    sort(num.begin(), num.end());
 
     for(int i = 0; i < n; i++){
-        cout << coordinates[i].second << ' ' << coordinates[i].first << '\n';
+        cout << num[i] << '\n';
     }
+
     return 0;
 }

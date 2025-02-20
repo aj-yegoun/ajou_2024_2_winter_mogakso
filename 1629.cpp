@@ -12,25 +12,28 @@
 #define ll long long
 using namespace std;
 
-int cnt_1 = 0, cnt_2 = 0;
-int fibo[1010101];
-
-int fib(int n)
-{
-    if (n == 1 || n == 2){
-        cnt_1++;
+long long divide(ll a, ll b, ll c){
+    if(b == 0){
         return 1;
     }
-    else return (fib(n - 1) + fib(n - 2));
+
+    ll half = divide(a, b/2, c);
+    ll half_modulo = (half*half) % c;
+
+    if(b%2 == 0){
+        return half_modulo;
+    }
+    else{
+        return (half_modulo*a) % c;
+    }
 }
 
 int main() {
     FASTIO;
+ 
+    ll a, b, c;
+    cin >> a >> b >> c;
+    cout << divide(a,b,c) << '\n';
 
-    int n;
-    cin >> n;
-    fib(n);
-
-    cout << cnt_1 << ' ' << n-2 << '\n';
     return 0;
 }

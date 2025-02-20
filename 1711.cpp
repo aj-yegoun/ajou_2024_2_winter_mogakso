@@ -8,7 +8,6 @@ bool check(pair<long long , long long> a, pair<long long , long long> b, pair<lo
     long long len1 = (b.first - a.first) * (b.first - a.first) + (b.second - a.second) * (b.second - a.second);
     long long len2 = (c.first - a.first) * (c.first - a.first) + (c.second - a.second) * (c.second - a.second);
     long long len3 = (b.first - c.first) * (b.first - c.first) + (b.second - c.second) * (b.second - c.second);
-
     bool good = false;
     if(len1 + len2 == len3 || len1 + len3 == len2 || len3 + len2 == len1) good = true;
 
@@ -20,10 +19,12 @@ int main() {
 
     int n;
     cin >> n;
-    vector<pair<long long , long long>> coordinates(n);
+    vector<pair<long long , long long>> coordinates;
 
     for (int i = 0; i < n; i++) {
-        cin >> coordinates[i].first >> coordinates[i].second;
+        int x, y;
+        cin >> x >> y;
+        coordinates.push_back({x,y});
     }
 
     int ans = 0;

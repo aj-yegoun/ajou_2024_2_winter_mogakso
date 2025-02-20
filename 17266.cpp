@@ -10,14 +10,11 @@
 #define ll long long
 using namespace std;
 
-
-
 int main() {
     FASTIO;
     
-    ll n, m, temp, max, prev;
-    cin >> n >> m;
-    
+    int n, m; cin >> n >> m;
+    ll temp = 0, max = 0, prev = 0;
     for(int i = 0; i < m; i++) {
         cin >> temp;
 

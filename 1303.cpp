@@ -12,7 +12,7 @@
 #define ll long long
 using namespace std;
 
-int n, m, w = 0, b = 0;
+int n, m, w, b;
 vector<vector<char>> battlefield(100, vector<char>(100));
 vector<vector<bool>> visit(100, vector<bool>(100));
 int dx[4] = {0, 0, 1, -1};
@@ -37,8 +37,6 @@ int main() {
     FASTIO;
 
     cin >> n >> m;
-    //battlefield.resize(m, vector<char>(n));
-    //visit.resize(m, vector<bool>(n, false));
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
@@ -50,7 +48,7 @@ int main() {
         for (int j = 0; j < n; j++) {
             if (!visit[i][j]) { // 방문하지 않은 병사라면
                 temp = 0;
-                dfs(i, j, battlefield[i][j]); // DFS로 그룹 크기 계산
+                dfs(i, j, battlefield[i][j]); // 그룹 크기 계산
                 if (battlefield[i][j] == 'W') {
                     w += temp * temp; // 흰색 병사 위력
                 } else {
